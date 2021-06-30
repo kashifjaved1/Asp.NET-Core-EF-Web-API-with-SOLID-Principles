@@ -31,6 +31,8 @@ namespace PaymentGatewayAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(); // enabling Cross-Origin-Sharing (CORS)
+
             services.AddControllers();
             services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<PaymentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Conn")));
@@ -54,9 +56,18 @@ namespace PaymentGatewayAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors( // setting-up, Cross-Origin-Sharing (CORS) Origins
+                options => options.WithOrigins(
+                                    "http://localhost:4200", "https://localhost:4200"
+                                    )
+                                  .AllowAnyHeader()
+                                  .AllowAnyMethod()
+                                  .AllowCredentials()
+            );
 
             app.UseAuthorization();
 
@@ -64,6 +75,7 @@ namespace PaymentGatewayAPI
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }
