@@ -46,6 +46,16 @@ namespace PaymentGatewayAPI
                 c.AddProfile<Services.MapperProfile.PaymentProfile>();
                 c.AddProfile<Services.MapperProfile.PaymentStateProfile>();
             }, typeof(Startup));
+
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Title = "Payment Gateway API",
+                    Version = "v1",
+                    Description = "Payment Gateway API using SOLID Princples"
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,6 +86,9 @@ namespace PaymentGatewayAPI
                 endpoints.MapControllers();
             });
 
+
+            app.UseSwagger();
+            app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "Payment Gateway API"));
         }
     }
 }
