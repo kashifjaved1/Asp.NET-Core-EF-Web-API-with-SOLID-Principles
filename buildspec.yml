@@ -1,0 +1,25 @@
+﻿version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      dotnet: 3.1
+
+  pre_build:
+    commands:
+      - echo Restore started on `date`
+      - dotnet restore PaymentGatewayAPI/PaymentGatewayAPI
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - dotnet build PaymentGatewayAPI/PaymentGatewayAPI.csproj
+
+  post_build:
+    commands:
+      - echo Publish started on `date`
+      - dotnet publish -c Release -o ./ PaymentGatewayAPI/PaymentGatewayAPI.csproj
+
+artifacts:
+  files:
+    - '**/*'
