@@ -1,4 +1,4 @@
-﻿version: 0.2
+﻿﻿version: 0.2
 
 phases:
   install:
@@ -8,17 +8,17 @@ phases:
   pre_build:
     commands:
       - echo Restore started on `date`
-      - dotnet restore ./PaymentGatewayAPI
+      - dotnet restore PaymentGatewayAPI
 
   build:
     commands:
       - echo Build started on `date`
-      - dotnet build ./PaymentGatewayAPI.csproj
+      - dotnet build PaymentGatewayAPI/PaymentGatewayAPI.csproj
 
   post_build:
     commands:
       - echo Publish started on `date`
-      - dotnet publish -c Release -r win-x64 --output ./BUILD PaymentGatewayAPI.sln #dotnet publish -c Release -o ./ ./PaymentGatewayAPI.csproj
+      - dotnet publish -c Release -o ./ PaymentGatewayAPI/PaymentGatewayAPI.csproj
 
 artifacts:
   files:
