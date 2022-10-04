@@ -18,7 +18,7 @@ phases:
   post_build:
     commands:
       - echo Publish started on `date`
-      - dotnet publish -c Release -r win-x64 --output ./PaymentGatewayAPI PaymentGatewayAPI.sln #dotnet publish -c Release -o ./ ./PaymentGatewayAPI.csproj
+      - dotnet publish -c Release -r win-x64 --output ./BUILD PaymentGatewayAPI.sln #dotnet publish -c Release -o ./ ./PaymentGatewayAPI.csproj
 
 artifacts:
   files:
