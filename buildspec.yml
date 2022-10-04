@@ -18,8 +18,8 @@ phases:
   post_build:
     commands:
       - echo Publish started on `date`
-      - dotnet publish -c Release -o ./ PaymentGatewayAPI/PaymentGatewayAPI.csproj
+      - dotnet publish -c Release PaymentGatewayAPI/PaymentGatewayAPI.csproj -o PaymentGatewayAPI
 
 artifacts:
   files:
-    - '*/*'
+    - PaymentGatewayAPI.zip
