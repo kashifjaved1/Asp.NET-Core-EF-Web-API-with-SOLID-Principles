@@ -8,17 +8,17 @@ phases:
   pre_build:
     commands:
       - echo Restore started on `date`
-      - dotnet restore PaymentGatewayAPI/PaymentGatewayAPI
+      - dotnet restore Asp.NET-Core-EF-Web-API-with-SOLID-Principles/PaymentGatewayAPI
 
   build:
     commands:
       - echo Build started on `date`
-      - dotnet build PaymentGatewayAPI/PaymentGatewayAPI.csproj
+      - dotnet build Asp.NET-Core-EF-Web-API-with-SOLID-Principles/PaymentGatewayAPI.csproj
 
   post_build:
     commands:
       - echo Publish started on `date`
-      - dotnet publish -c Release -o ./ PaymentGatewayAPI/PaymentGatewayAPI.csproj
+      - dotnet publish -c Release -o ./ Asp.NET-Core-EF-Web-API-with-SOLID-Principles/PaymentGatewayAPI.csproj
 
 artifacts:
   files:
